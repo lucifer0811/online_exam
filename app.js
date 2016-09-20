@@ -3,13 +3,13 @@ var app = express();
 
 var mysql      = require('mysql');
 
-var pool  = mysql.createPool({
-  connectionLimit : 10,
-  host     : 'localhost',
-  user     : 'root',
-  password : '',
-  database : 'angularcode_products'
-});
+// var pool  = mysql.createPool({
+//   connectionLimit : 10,
+//   host     : 'localhost',
+//   user     : 'root',
+//   password : '',
+//   database : 'angularcode_products'
+// });
 
 
 var path= require("path");
