@@ -31,11 +31,10 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 -- Table `online_exam`.`teacher`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `online_exam`.`teacher` (
+CREATE TABLE IF NOT EXISTS `online_exam`.`user` (
   `name` VARCHAR(45) NOT NULL,
   `id` INT NOT NULL,
   `university_name` VARCHAR(45) NULL,
-  `` VARCHAR(45) NULL,
   `login_email` INT NOT NULL,
   `login_password` VARCHAR(45) NOT NULL,
   PRIMARY KEY (`id`, `login_email`, `login_password`))
@@ -45,7 +44,7 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 -- Table `online_exam`.`question_category`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `online_exam`.`question_category` (
+CREATE TABLE IF NOT EXISTS `online_exam`.`category` (
   `id` INT NOT NULL,
   `name` VARCHAR(45) NULL,
   `descriptions` VARCHAR(45) NULL,
@@ -59,7 +58,7 @@ ENGINE = InnoDB;
 CREATE TABLE IF NOT EXISTS `online_exam`.`section` (
   `id` INT NOT NULL,
   `number_question` VARCHAR(45) NOT NULL,
-  `Time_section` TIMESTAMP(30) NOT NULL,
+  `Time_section` TIME(6) NOT NULL,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB;
 
@@ -91,13 +90,6 @@ CREATE TABLE IF NOT EXISTS `online_exam`.`exam` (
 ENGINE = InnoDB;
 
 
--- -----------------------------------------------------
--- Table `online_exam`.`student_exam`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `online_exam`.`student_exam` (
-)
-ENGINE = InnoDB;
-
 
 -- -----------------------------------------------------
 -- Table `online_exam`.`student`
@@ -105,8 +97,8 @@ ENGINE = InnoDB;
 CREATE TABLE IF NOT EXISTS `online_exam`.`student` (
   `id` INT NOT NULL,
   `name` VARCHAR(45) NULL,
-  `studentcol` VARCHAR(45) NULL,
-  PRIMARY KEY (`id`))
+  `MSV` VARCHAR(45) NULL,
+  PRIMARY KEY (`id`, `MSV`))
 ENGINE = InnoDB;
 
 

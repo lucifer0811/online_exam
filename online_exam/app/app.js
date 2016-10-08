@@ -4,12 +4,12 @@ app.config(['$routeProvider',
   function($routeProvider) {
     $routeProvider.
     when('/', {
-      title: 'Products',
-      templateUrl: 'partials/products.html',
-      controller: 'productsCtrl'
+      title: 'OnlineExam',
+      templateUrl: 'partials/online_exams.html',
+      controller: 'online_examsCtrl'
     })
     .otherwise({
       redirectTo: '/'
     });;
 }]);
-    
+
