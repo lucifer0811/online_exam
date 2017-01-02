@@ -55,7 +55,7 @@ app.controller('categoryEditCtrl', function ($scope, $modalInstance, item, Data)
         $scope.isClean = function() {
             return angular.equals(original, $scope.category);
         }
-        $scope.savecategory = function (category) {
+        $scope.saveCategory = function (category) {
             category.uid = $scope.uid;
             if(category.id > 0){
                 Data.put('categories/'+category.id, category).then(function (result) {
@@ -68,7 +68,7 @@ app.controller('categoryEditCtrl', function ($scope, $modalInstance, item, Data)
                     }
                 });
             }else{
-                Data.post('categorys', category).then(function (result) {
+                Data.post('categories', category).then(function (result) {
                     if(result.status != 'error'){
                         var x = angular.copy(category);
                         x.save = 'insert';

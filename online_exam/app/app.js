@@ -5,8 +5,8 @@ app.config(['$routeProvider',
     $routeProvider.
     when('/', {
       title: 'OnlineExam',
-      templateUrl: 'partials/online_exams.html',
-      controller: 'online_examsCtrl'
+      templateUrl: 'partials/categories.html',
+      controller: 'categoriesCtrl'
     })
     .otherwise({
       redirectTo: '/'

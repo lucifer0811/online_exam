@@ -1,12 +1,15 @@
-var express = require('express');
-var app = express();
+var express = require('express'),
+  cors = require('cors'),
+  app = express();
 
-var mysql      = require('mysql');
+app.use(cors());
 
-var pool  = mysql.createPool({
+var mysql = require('mysql');
+
+var pool = mysql.createPool({
   connectionLimit : 10,
-  host     : 'localhost',
-  user     : 'root',
+  host : 'localhost',
+  user : 'root',
   password : '',
   database : 'online_exam'
 });
@@ -15,11 +18,28 @@ var pool  = mysql.createPool({
 var path= require("path");
 app.use('/static', express.static(__dirname + '/online_exam'));
 
-
 var bodyParser = require('body-parser')
 // parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: false }))
 
+app.use(function (req, res, next) {
+
+  // Website you wish to allow to connect
+  res.setHeader('Access-Control-Allow-Origin', 'http://localhost');
+
+  // Request methods you wish to allow
+  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
+
+  // Request headers you wish to allow
+  res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
+
+  // Set to true if you need the website to include cookies in the requests sent
+  // to the API (e.g. in case you use sessions)
+  res.setHeader('Access-Control-Allow-Credentials', true);
+
+  // Pass to next layer of middleware
+  next();
+});
 // parse application/json
 app.use(bodyParser.json())
 
@@ -35,7 +55,6 @@ app.get('/api/categories', function (req, res) {
 		res.json(rows);
 	});
 });
-
 
 app.post('/api/categories', function (req, res) {
 	console.log(req.body.id);
